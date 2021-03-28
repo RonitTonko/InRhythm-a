@@ -18,4 +18,4 @@ there are three classes:
 3.Main
 
 *you can run the Tests class which includes JUNIT tests
-or you can the Main class to see the console output.
+or you can run the Main class to see the console output.
