@@ -5,7 +5,7 @@
 
 clone the project
 ```bash
-git clone https://github.com/RonitTonko/InRhythm.git
+git clone https://github.com/RonitTonko/InRhythm-a.git
 ```
 
 make sure to install the required dependencies
