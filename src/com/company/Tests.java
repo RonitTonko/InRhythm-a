@@ -46,6 +46,7 @@ public class Tests {
     public void pageIndexTest2() {
         Assert.assertEquals(helper.pageIndex(2), 0);
     }
+
     @Test
     public void pageIndexTooBigTest() {
         Assert.assertEquals(helper.pageIndex(20), -1);

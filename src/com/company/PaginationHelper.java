@@ -51,7 +51,6 @@ public class PaginationHelper {
         return  (int)Math.ceil(totalItems / (double)itemsPerPage);
     }
 
-
     /**
      * <p>The method calculates and returns the number of the items of the received page's index.
      *  The method returns -1 for pageIndex values that are out of range</p>
