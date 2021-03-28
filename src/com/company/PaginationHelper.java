@@ -2,8 +2,8 @@ package com.company;
 
 import java.util.Arrays;
 /**
- * PaginationHelper is a class which
- *
+ * PaginationHelper is a class which represents items and how many items will be
+ * allowed per each page
  *
  * @author  Ronit Tonkonogi
  * @since   2021-03-28
@@ -11,27 +11,39 @@ import java.util.Arrays;
 public class PaginationHelper {
 
     private int itemsPerPage;
-    private char[] values;
+    private char[] items;
     private int pageCount;
     private int totalItems;
     private int lastPageItems;
 
-    public PaginationHelper(char[] values, int itemsPerPage) {
+    /** Creates an Pagination Helper with the specified array and items per page value.
+     *
+     * @param items This is an array which contains the items.
+     * @param itemsPerPage this is the value which indicates how many items will be
+     * allowed per each page.
+     */
+    public PaginationHelper(char[] items, int itemsPerPage) {
         this.itemsPerPage = itemsPerPage;
-        this.values = Arrays.copyOf(values, values.length);
-        this.totalItems = values.length;
+        this.items = Arrays.copyOf(items, items.length);
+        this.totalItems = items.length;
         pageCount = this.pageCount();
     }
 
     /**
-     * <p>The method returns the total number of the elements in the array </p>
+     * <p>The method returns the total number of the elements in the array. </p>
      *
-     * @return total number of the elements in the array
+     * @return total number of the elements in the array.
      */
     public int itemCount(){
         return totalItems;
     }
 
+    /**
+     * <p>The method calculates how many items are allowed for each page,
+     * and returns the total number of pages.</p>
+     *
+     * @return the number of pages
+     */
     public int pageCount() {
         if(itemsPerPage <= 0)
             return -1;
@@ -39,9 +51,14 @@ public class PaginationHelper {
         return  (int)Math.ceil(totalItems / (double)itemsPerPage);
     }
 
+
     /**
-     * returns the number of items on the current page. page_index is zero based.
-     * this method should return -1 for pageIndex values that are out of range
+     * <p>The method calculates and returns the number of the items of the received page's index.
+     *  The method returns -1 for pageIndex values that are out of range</p>
+     *
+     * @return number of the items of the received page's index.
+     * @param pageIndex This is the page index for which the method calculates the number of items on it.
+     *                  pageIndex is zero based.
      */
     public int pageItemCount(int pageIndex){
         if((pageIndex < 0) || (pageIndex >= pageCount)){
@@ -55,9 +72,15 @@ public class PaginationHelper {
         else
             return itemsPerPage;
     }
-/*page_index takes an item index and returns the page that it belongs on
 
- */
+    /**
+     * <p>The method calculates and returns the page index which itemIndex is on.
+     * The method returns -1 for itemIndex values that are out of range</p>
+     *
+     * @return the index of page which the item index is on.
+     * @param itemIndex This is the index of the item that the method is calculating the page index for.
+     *                  itemIndex is zero based.
+     */
     public int pageIndex(int itemIndex){
         if((itemIndex < 0) || (itemIndex >= totalItems)){
             return -1;
@@ -65,5 +88,4 @@ public class PaginationHelper {
 
         return  (int)Math.floor(itemIndex / (double)itemsPerPage);
     }
-
 }
